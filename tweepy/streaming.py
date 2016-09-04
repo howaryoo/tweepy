@@ -315,11 +315,9 @@ class Stream(object):
             length = 0
             while not resp.raw.closed:
                 line = buf.read_line()
-                if line:
-                    line = line.strip()
                 if not line:
                     self.listener.keep_alive()  # keep-alive new lines are expected
-                elif line.isdigit():
+                elif line.strip().isdigit():
                     length = int(line)
                     break
                 else:
