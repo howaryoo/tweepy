@@ -47,6 +47,10 @@ class StreamListener(object):
         Override this method if you wish to manually handle
         the stream data. Return False to stop stream and close connection.
         """
+        if not raw_data:
+            logger.error("Empty content received from twitter")
+            return
+
         data = json.loads(raw_data)
 
         if 'in_reply_to_status_id' in data:
