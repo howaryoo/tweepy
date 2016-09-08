@@ -48,7 +48,7 @@ class StreamListener(object):
         the stream data. Return False to stop stream and close connection.
         """
         if not raw_data:
-            logger.error("Empty content received from twitter")
+            logging.error("Empty content received from twitter")
             return
 
         data = json.loads(raw_data)
